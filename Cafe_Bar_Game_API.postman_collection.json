@@ -1,0 +1,1035 @@
+{
+	"info": {
+		"_postman_id": "cafe-bar-game-api",
+		"name": "Cafe & Bar Game Management API",
+		"description": "Complete API collection for the Cafe and Bar Game Management System. This collection includes all endpoints for managing bar games, cafe items, customers, memberships, and orders.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Check if the API is running and healthy"
+					},
+					"response": []
+				}
+			],
+			"description": "Health check endpoints"
+		},
+		{
+			"name": "Bar Games",
+			"item": [
+				{
+					"name": "Get All Bar Games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games"
+							]
+						},
+						"description": "Retrieve all bar games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bar Game by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/{{barGameId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"{{barGameId}}"
+							]
+						},
+						"description": "Retrieve a specific bar game by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Bar Game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pool Table\",\n  \"description\": \"Standard 8-ball pool table\",\n  \"pricePerHour\": 15.00,\n  \"available\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bar-games",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games"
+							]
+						},
+						"description": "Create a new bar game"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bar Game",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Pool Table\",\n  \"description\": \"Updated description\",\n  \"pricePerHour\": 18.00,\n  \"available\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/{{barGameId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"{{barGameId}}"
+							]
+						},
+						"description": "Update an existing bar game"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bar Game",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/{{barGameId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"{{barGameId}}"
+							]
+						},
+						"description": "Delete a bar game"
+					},
+					"response": []
+				},
+				{
+					"name": "Check In to Game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": \"{{customerId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/{{barGameId}}/check-in",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"{{barGameId}}",
+								"check-in"
+							]
+						},
+						"description": "Check in a customer to a bar game"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Out of Game Session",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/game-sessions/{{gameSessionId}}/check-out",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"game-sessions",
+								"{{gameSessionId}}",
+								"check-out"
+							]
+						},
+						"description": "Check out a customer from a game session"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Game Sessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/game-sessions/active",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"game-sessions",
+								"active"
+							]
+						},
+						"description": "Get all active game sessions"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Past Game Sessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/game-sessions/past",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"game-sessions",
+								"past"
+							]
+						},
+						"description": "Get all past game sessions"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Game Session",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"endTime\": \"2023-12-01T12:00:00.000Z\",\n  \"cost\": 25.50\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/game-sessions/{{gameSessionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"game-sessions",
+								"{{gameSessionId}}"
+							]
+						},
+						"description": "Update a game session"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Game Session",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bar-games/game-sessions/{{gameSessionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bar-games",
+								"game-sessions",
+								"{{gameSessionId}}"
+							]
+						},
+						"description": "Delete a game session"
+					},
+					"response": []
+				}
+			],
+			"description": "Bar games management endpoints"
+		},
+		{
+			"name": "Cafe Items",
+			"item": [
+				{
+					"name": "Get All Cafe Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items"
+							]
+						},
+						"description": "Retrieve all cafe items"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cafe Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items/{{cafeItemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items",
+								"{{cafeItemId}}"
+							]
+						},
+						"description": "Retrieve a specific cafe item by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cafe Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Espresso\",\n  \"description\": \"Single shot espresso\",\n  \"price\": 3.50,\n  \"category\": \"Coffee\",\n  \"quantity\": 100,\n  \"inStock\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items"
+							]
+						},
+						"description": "Create a new cafe item"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cafe Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Espresso\",\n  \"description\": \"Updated description\",\n  \"price\": 4.00,\n  \"category\": \"Coffee\",\n  \"quantity\": 80,\n  \"inStock\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items/{{cafeItemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items",
+								"{{cafeItemId}}"
+							]
+						},
+						"description": "Update an existing cafe item"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cafe Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items/{{cafeItemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items",
+								"{{cafeItemId}}"
+							]
+						},
+						"description": "Delete a cafe item"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low Stock Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items/low-stock",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items",
+								"low-stock"
+							]
+						},
+						"description": "Get items with low stock (quantity < 10 or inStock = false)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Items by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cafe-items/category/Coffee",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cafe-items",
+								"category",
+								"Coffee"
+							]
+						},
+						"description": "Get cafe items by category"
+					},
+					"response": []
+				}
+			],
+			"description": "Cafe items management endpoints"
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Retrieve all customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}"
+							]
+						},
+						"description": "Retrieve a specific customer by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"+1234567890\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Create a new customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Updated Doe\",\n  \"email\": \"john.updated@example.com\",\n  \"phone\": \"+1234567890\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}"
+							]
+						},
+						"description": "Update an existing customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}"
+							]
+						},
+						"description": "Delete a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/search?query=john",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "john"
+								}
+							]
+						},
+						"description": "Search customers by name, email, or phone"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}",
+								"orders"
+							]
+						},
+						"description": "Get all orders for a specific customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Game Sessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}/game-sessions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}",
+								"game-sessions"
+							]
+						},
+						"description": "Get all game sessions for a specific customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Membership to Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"membershipId\": \"{{membershipId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}/assign-membership",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}",
+								"assign-membership"
+							]
+						},
+						"description": "Assign a membership to a customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Link Customer to Membership",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"membershipId\": \"{{membershipId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customerId}}/link-membership",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customerId}}",
+								"link-membership"
+							]
+						},
+						"description": "Link an anonymous customer to a membership"
+					},
+					"response": []
+				}
+			],
+			"description": "Customer management endpoints"
+		},
+		{
+			"name": "Memberships",
+			"item": [
+				{
+					"name": "Get All Memberships",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/memberships",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"memberships"
+							]
+						},
+						"description": "Retrieve all memberships"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Membership by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/memberships/{{membershipId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"memberships",
+								"{{membershipId}}"
+							]
+						},
+						"description": "Retrieve a specific membership by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Membership",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Premium Membership\",\n  \"description\": \"Premium membership with exclusive benefits\",\n  \"duration\": 30,\n  \"price\": 99.99,\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/memberships",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"memberships"
+							]
+						},
+						"description": "Create a new membership"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Membership",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Premium Membership\",\n  \"description\": \"Updated description\",\n  \"duration\": 60,\n  \"price\": 149.99,\n  \"active\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/memberships/{{membershipId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"memberships",
+								"{{membershipId}}"
+							]
+						},
+						"description": "Update an existing membership"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Membership",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/memberships/{{membershipId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"memberships",
+								"{{membershipId}}"
+							]
+						},
+						"description": "Delete a membership"
+					},
+					"response": []
+				}
+			],
+			"description": "Membership management endpoints"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Retrieve all orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}"
+							]
+						},
+						"description": "Retrieve a specific order by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": \"{{customerId}}\",\n  \"items\": [\n    {\n      \"itemId\": \"{{cafeItemId}}\",\n      \"itemType\": \"CafeItem\",\n      \"quantity\": 2\n    },\n    {\n      \"itemId\": \"{{gameSessionId}}\",\n      \"itemType\": \"GameSession\",\n      \"quantity\": 1\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Create a new order with multiple items"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Items to Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"itemId\": \"{{cafeItemId}}\",\n      \"itemType\": \"CafeItem\",\n      \"quantity\": 1\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"items"
+							]
+						},
+						"description": "Add items to an existing order"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item Quantity in Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 3\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/items/{{orderItemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"items",
+								"{{orderItemId}}"
+							]
+						},
+						"description": "Update the quantity of an item in an order"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Items from Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/items/{{orderItemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"items",
+								"{{orderItemId}}"
+							]
+						},
+						"description": "Remove items from an order"
+					},
+					"response": []
+				},
+				{
+					"name": "Pay for Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/pay",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"pay"
+							]
+						},
+						"description": "Process payment for an order"
+					},
+					"response": []
+				}
+			],
+			"description": "Order management endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		},
+		{
+			"key": "barGameId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "cafeItemId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "customerId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "membershipId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "orderId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "orderItemId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "gameSessionId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
